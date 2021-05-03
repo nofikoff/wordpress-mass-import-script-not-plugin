@@ -13,20 +13,20 @@ $list = [
 //    "http://www.yuzhcable.info/index.php?CAT=11&MRI=110106",
 //500
 
-     "http://www.yuzhcable.info/index.php?CAT=11&MRI=110201",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100101",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100102",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100103",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100104",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100105",
+//     "http://www.yuzhcable.info/index.php?CAT=11&MRI=110201",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100101",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100102",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100103",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100104",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100105",
 //1350
 
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100106",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100107",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100409",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100410",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100411",
-     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100412",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100106",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100107",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100409",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100410",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100411",
+//     "http://www.yuzhcable.info/index.php?CAT=10&MRI=100412",
 //1850
 
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=150701",
@@ -34,23 +34,49 @@ $list = [
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=150801",
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=150802",
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=152201",
+
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=152301",
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=152302",
 //     "http://www.yuzhcable.info/index.php?CAT=15&MRI=152401",
 //     "http://www.yuzhcable.info/index.php?CAT=18&MRI=180101",
+//
 //     "http://www.yuzhcable.info/index.php?CAT=18&MRI=180108",
 //     "http://www.yuzhcable.info/index.php?CAT=18&MRI=180109",
 //     "http://www.yuzhcable.info/index.php?CAT=18&MRI=180116",
 //     "http://www.yuzhcable.info/index.php?CAT=18&MRI=180117",
+//
 //     "http://www.yuzhcable.info/index.php?CAT=18&MRI=180123",
 //     "http://www.yuzhcable.info/index.php?CAT=20&MRI=200105",
 //     "http://www.yuzhcable.info/index.php?CAT=20&MRI=200106",
 //     "http://www.yuzhcable.info/index.php?CAT=20&MRI=200107",
 //     "http://www.yuzhcable.info/index.php?CAT=20&MRI=200205",
-//     "http://www.yuzhcable.info/index.php?CAT=20&MRI=200206",
-//     "http://www.yuzhcable.info/index.php?CAT=20&MRI=200303",
+// 1 кв нельзя опредеить AsXSn
+//    "http://www.yuzhcable.info/index.php?CAT=20&MRI=200206",
+// 20 и 35 киловольт AAsXSn
+//    "http://www.yuzhcable.info/index.php?CAT=20&MRI=200303",
+//2856
+
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260101',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260102',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260201',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260202',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260301',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260302',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260401',
+//    'http://www.yuzhcable.info/index.php?CAT=26&MRI=260402',
 ];
 $product_list = [];
+
+$product_name2category = [
+    'КГВ' => 141,
+    'КГВВ' => 324,
+    'NYM-O' => 325,
+    'ВКбШв' => 326,
+    'ВКбШвнг' => 327,
+    'NHXMH-J' => 328,
+    'NHXMH-O' => 329,
+    'AsXSn' => 330,
+];
 
 
 // списки продуктов два уровня
@@ -79,7 +105,7 @@ foreach ($product_list as $item) {
         // возможно удалить все товары ?? на тестовой базе показать СТАСУ
 
         // по умолчанию БЕЗ КАТЕГОРИИ
-        if ($category_id == 0) $category_id = 283;
+        if ($category_id == 0) $category_id = 323;
 
         $img_id = upload_image($product_cart['img']);
 
@@ -91,14 +117,14 @@ foreach ($product_list as $item) {
                 'short_description' => '',
                 'regular_price' => '1.00', // product priceцена обязательно ибо заказать нельзя будет товар без цены
                 'image_id' => $img_id,
+                'category_ids' => [$category_id],
             ]
         );
 
         // привязать категорию
-        wp_set_object_terms($product_id, $category_id, 'product_cat');
+        //wp_set_object_terms($product_id, $category_id, 'product_cat');
 
-        echo " #".$product_id . " ";
-
+        echo " #" . $product_id . " category - $category_id \n<br>";
 
     }
 

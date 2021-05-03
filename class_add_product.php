@@ -9,6 +9,7 @@ function create_product($args)
 {
     global $woocommerce;
 
+
     if (!function_exists('wc_get_product_object_type') && !function_exists('wc_prepare_product_attributes'))
         return false;
 
@@ -101,7 +102,7 @@ function create_product($args)
 
     // Product categories and Tags
     if (isset($args['category_ids']))
-        $product->set_category_ids('category_ids');
+        $product->set_category_ids($args['category_ids']);
 
     if (isset($args['tag_ids']))
         $product->set_tag_ids($args['tag_ids']);
@@ -216,12 +217,22 @@ function upload_image($image_url)
 // верме категории второго и третьего уровня в виде ID => NAME
 function my_get_categories($product_name)
 {
-    if (preg_match('~-(\d+)~', $product_name, $m) and
-        preg_match('~^([^-\s]+)~', $product_name, $n)) {
-        $type_name_from_product = $n[1];
-        $type_kilovat_from_product = $m[1];
-    }
 
+    global $product_name2category;
+    if (preg_match('~-(\d+)~', $product_name, $m))
+        $type_kilovat_from_product = $m[1];
+
+    if (preg_match('~^([^-\s]+)~', $product_name, $n))
+        $type_name_from_product = $n[1];
+
+    if (isset($product_name2category[$type_name_from_product]))
+        return $product_name2category[$type_name_from_product];
+
+
+    if (!isset($type_name_from_product) or !isset($type_kilovat_from_product)) {
+        echo " " . @$type_name_from_product . " на " . @$type_kilovat_from_product . " киловольт НЕ НАЙДЕНА для $product_name\n";
+        return 0;
+    }
 
     $taxonomy = 'product_cat';
     $orderby = 'name';
@@ -287,7 +298,7 @@ function my_get_categories($product_name)
         //}
     }
 
-    echo " ".$type_name_from_product . " на " . $type_kilovat_from_product . " киловольт НЕ НАЙДЕНА для $product_name\n";
+    echo " " . $type_name_from_product . " на " . $type_kilovat_from_product . " киловольт НЕ НАЙДЕНА для $product_name\n";
     return 0;
 }
 
@@ -298,7 +309,7 @@ function getListProductsInCategory($url_category)
     $content = mb_convert_encoding($content, "UTF-8", "WINDOWS-1251");
     $result = [];
 
-    echo $url_category ." смотрим список товаров \n";
+    echo $url_category . " смотрим список товаров \n";
 
     if (preg_match_all('~TITLE="Показать выбранное изделие" HREF="([^"]+?)">~um', $content, $urls)
         and preg_match_all('~<SPAN CLASS="UK_Tbb">([^<]+?)<\/SPAN> ([^<]+?)&nbsp <\/A>~um', $content, $named)
